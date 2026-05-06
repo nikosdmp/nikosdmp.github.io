@@ -3,15 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nikos Dimopoulos</title>
+  <title>Nikos Dimopoulos | Portfolio</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    /* CSS Variables για εύκολη αλλαγή χρωμάτων */
+    :root {
+      --bg-color: #020617; /* Very dark blue/slate */
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.5);
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -24,258 +33,402 @@
     }
 
     body {
-      background: #0f172a;
-      color: white;
+      background: var(--bg-color);
+      color: var(--text-main);
+      overflow-x: hidden;
     }
 
+    /* Βασικό Background Gradient Pattern */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: radial-gradient(circle at 50% 0%, #1e3a8a 0%, transparent 50%);
+      z-index: -1;
+      opacity: 0.5;
+    }
+
+    /* --- Navbar --- */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 0;
+      background: rgba(2, 6, 23, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* --- Hero Section --- */
     header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(135deg, #1e3a8a, #2563eb);
-      animation: fadeIn 1.5s ease;
+      padding: 0 20px;
+      animation: fadeInUp 1s ease-out;
     }
 
     header h1 {
-      font-size: 42px;
+      font-size: 56px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      /* Gradient Text Effect */
+      background: linear-gradient(to right, #60a5fa, #3b82f6);
+      -webkit-background-clip: text;
+      color: transparent;
+      line-height: 1.2;
     }
 
     header p {
-      margin-top: 10px;
-      opacity: 0.8;
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin-bottom: 30px;
     }
 
     .btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: white;
-      color: #1e3a8a;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 28px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px var(--accent-glow);
     }
 
     .btn:hover {
-      background: #3b82f6;
-      color: white;
+      background: #2563eb;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px var(--accent-glow);
     }
 
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: var(--accent);
+    }
+
+    /* --- Sections --- */
     section {
       max-width: 1000px;
       margin: auto;
-      padding: 80px 20px;
+      padding: 100px 20px; /* Μεγαλύτερο padding για "αναπνοή" */
     }
 
     h2 {
-      margin-bottom: 20px;
-      border-left: 4px solid #3b82f6;
-      padding-left: 10px;
+      font-size: 32px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
       font-weight: 600;
-      letter-spacing: 0.5px;
     }
 
-    .skills span {
-      display: inline-block;
-      background: #1e293b;
-      padding: 8px 12px;
-      margin: 5px;
-      border-radius: 8px;
-      transition: 0.3s;
+    h2 i {
+      color: var(--accent);
     }
 
-    .skills span:hover {
-      background: #3b82f6;
-      transform: translateY(-2px);
+    p, li {
+      color: var(--text-muted);
+      line-height: 1.7;
     }
 
+    /* --- Skills --- */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .skill-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--accent);
+      background: rgba(59, 130, 246, 0.1);
+      transform: translateY(-3px);
+    }
+
+    /* --- Highlights List --- */
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    li::before {
+      content: '\f058'; /* Font Awesome Check-circle */
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+
+    /* --- Projects --- */
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
     }
 
     .card {
       position: relative;
-      overflow: hidden;
-
-      background: rgba(255, 255, 255, 0.04);
+      background: var(--card-bg);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-
-      border: 1px solid rgba(255, 255, 255, 0.06);
-
-      padding: 22px;
-      border-radius: 18px;
-
-      transition: all 0.35s ease;
-
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--card-border);
+      padding: 30px;
+      border-radius: 20px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      flex-direction: column;
     }
 
     .card:hover {
-      transform: translateY(-8px) scale(1.02);
-      background: rgba(255, 255, 255, 0.07);
-
-      border: 1px solid rgba(255, 255, 255, 0.15);
-
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      transform: translateY(-10px);
+      border-color: rgba(59, 130, 246, 0.4);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.15);
     }
 
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 18px;
-      background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,0.05),
-        transparent
-      );
-      opacity: 0;
-      transition: 0.4s;
-    }
-
-    .card:hover::before {
-      opacity: 1;
+    .card-icon {
+      font-size: 30px;
+      color: var(--accent);
+      margin-bottom: 20px;
     }
 
     .card h3 {
-      font-size: 20px;
+      font-size: 22px;
       margin-bottom: 10px;
-      font-weight: 600;
+      color: var(--text-main);
     }
 
     .card p {
-      font-size: 14px;
-      opacity: 0.75;
-      line-height: 1.6;
-      margin-bottom: 12px;
+      font-size: 15px;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .card-tags span {
+      font-size: 12px;
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 500;
     }
 
     .card a {
+      align-self: flex-start;
+      color: var(--text-main);
+      text-decoration: none;
       font-weight: 500;
-      display: inline-flex;
+      font-size: 15px;
+      display: flex;
       align-items: center;
-      gap: 6px;
-      color: #60a5fa;
-      transition: 0.3s;
+      gap: 8px;
+      transition: color 0.3s;
     }
 
     .card a:hover {
-      color: white;
+      color: var(--accent);
     }
 
-    ul {
-      padding-left: 20px;
+    .card a i {
+      transition: transform 0.3s;
     }
 
-    li {
-      margin-bottom: 8px;
-      line-height: 1.6;
+    .card a:hover i {
+      transform: translateX(5px);
     }
 
-    a {
-      color: #60a5fa;
-      text-decoration: none;
+    /* --- Contact & Footer --- */
+    .contact {
+      display: flex;
+      gap: 20px;
     }
 
     .contact a {
-      display: inline-block;
-      margin-right: 15px;
-      font-size: 28px;
-      color: #60a5fa;
-      transition: 0.3s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 50%;
+      font-size: 22px;
+      color: var(--text-main);
+      text-decoration: none;
+      transition: all 0.3s;
     }
 
     .contact a:hover {
-      color: white;
-      transform: scale(1.2);
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px var(--accent-glow);
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      opacity: 0.6;
+      padding: 30px 20px;
+      border-top: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 50px;
     }
 
-    /* Animations */
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+    /* --- Animations --- */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      header h1 { font-size: 40px; }
+      nav { gap: 15px; }
+      section { padding: 80px 20px; }
+    }
   </style>
 </head>
-
 <body>
 
-<header>
-  <h1>Hi, I'm Nikos 👋</h1>
-  <p>Computer Science student passionate about coding.</p>
-  <div style="margin-top:20px;">
-    <a href="cv.pdf" download class="btn">Download CV</a>
-  </div>
-</header>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-<section>
-  <h2><i class="fas fa-user"></i> About Me</h2>
-  <p>I enjoy building projects, solving problems, and learning new technologies.</p>
-</section>
-
-<section>
-  <h2><i class="fas fa-tools"></i> Tech Stack</h2>
-  <div class="skills">
-    <span>Java</span>
-    <span>C</span>
-    <span>Python</span>
-  </div>
-</section>
-
-<section>
-  <h2><i class="fas fa-bolt"></i> Highlights</h2>
-  <ul>
-    <li>Strong understanding of C programming</li>
-    <li>Experience with file handling and data structures</li>
-    <li>Problem-solving mindset</li>
-  </ul>
-</section>
-
-<section>
-  <h2><i class="fas fa-code"></i> Projects</h2>
-  <div class="projects">
-
-    <div class="card">
-      <h3>StarWarsMazeGame</h3>
-      <p>Maze game in C featuring file handling and structured logic.</p>
-      <a href="https://github.com/nikosdmp/StarWarsMazeGame">View Project →</a>
+  <header id="home">
+    <h1>Hi, I'm Nikos 👋</h1>
+    <p>Computer Science student passionate about coding, building projects, and solving complex problems.</p>
+    <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 10px;">
+      <a href="#projects" class="btn">View Projects <i class="fas fa-arrow-right"></i></a>
+      <a href="cv.pdf" download class="btn btn-outline"><i class="fas fa-download"></i> Download CV</a>
     </div>
+  </header>
 
-    <div class="card">
-      <h3>BillionairesListManager</h3>
-      <p>Manage billionaire data with file support.</p>
-      <a href="https://github.com/nikosdmp/BillionairesListManager">View Project →</a>
+  <section id="about">
+    <h2><i class="fas fa-terminal"></i> Tech Stack</h2>
+    <p style="margin-bottom: 25px;">I enjoy building projects and learning new technologies. Here are the tools I work with:</p>
+    <div class="skills-container">
+      <div class="skill-tag"><i class="fa-brands fa-java" style="color: #ed8b00;"></i> Java</div>
+      <div class="skill-tag"><i class="fa-solid fa-c"></i> C Programming</div>
+      <div class="skill-tag"><i class="fa-brands fa-python" style="color: #3776ab;"></i> Python</div>
+      <div class="skill-tag"><i class="fa-brands fa-git-alt" style="color: #f1502f;"></i> Git & GitHub</div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <section id="highlights">
+    <h2><i class="fas fa-bolt"></i> Highlights & Skills</h2>
+    <ul>
+      <li>Strong understanding of C programming and memory management.</li>
+      <li>Experience with complex file handling and building robust data structures.</li>
+      <li>Analytical problem-solving mindset and debugging skills.</li>
+      <li>Familiarity with Object-Oriented Programming (OOP) concepts in Java.</li>
+    </ul>
+  </section>
 
-<section>
-  <h2><i class="fas fa-envelope"></i> Contact</h2>
-  <div class="contact">
-    <a href="https://github.com/nikosdmp">
-      <i class="fa-brands fa-github"></i>
-    </a>
+  <section id="projects">
+    <h2><i class="fas fa-code"></i> Featured Projects</h2>
+    <div class="projects">
 
-    <a href="https://www.linkedin.com/in/nikos-dimopoulos-487606310">
-      <i class="fa-brands fa-linkedin"></i>
-    </a>
-  </div>
-</section>
+      <div class="card">
+        <i class="fas fa-gamepad card-icon"></i>
+        <h3>StarWarsMazeGame</h3>
+        <p>A logic-based maze game built entirely in C. Features include dynamic memory allocation, advanced file handling for saving/loading states, and structured game logic.</p>
+        <div class="card-tags">
+          <span>C</span>
+          <span>Algorithms</span>
+          <span>File I/O</span>
+        </div>
+        <a href="https://github.com/nikosdmp/StarWarsMazeGame" target="_blank">View Repository <i class="fas fa-arrow-right"></i></a>
+      </div>
 
-<footer>
-  <p>© 2026 Nikos Dimopoulos</p>
-</footer>
+      <div class="card">
+        <i class="fas fa-chart-line card-icon"></i>
+        <h3>Billionaires List</h3>
+        <p>A data management application designed to parse, sort, and manage extensive billionaire data using file support and efficient data structures.</p>
+        <div class="card-tags">
+          <span>Java / C</span>
+          <span>Data Structures</span>
+        </div>
+        <a href="https://github.com/nikosdmp/BillionairesListManager" target="_blank">View Repository <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2><i class="fas fa-envelope-open-text"></i> Let's Connect</h2>
+    <p style="margin-bottom: 25px;">I'm currently looking for new opportunities and collaborations. Feel free to reach out!</p>
+    <div class="contact">
+      <a href="https://github.com/nikosdmp" target="_blank" title="GitHub">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/nikos-dimopoulos-487606310" target="_blank" title="LinkedIn">
+        <i class="fa-brands fa-linkedin-in"></i>
+      </a>
+      <a href="mailto:your.email@example.com" title="Email Me">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Nikos Dimopoulos. Designed & Built with passion.</p>
+  </footer>
 
 </body>
 </html>
