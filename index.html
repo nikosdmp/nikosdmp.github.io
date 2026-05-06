@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* CSS Variables for Apple Dark Mode */
+    /* CSS Variables: Συνδυασμός του προηγούμενου Blue Background με Apple Colors */
     :root {
-      --bg-color: #000000;
+      --bg-color: #020617; /* Deep Slate Blue */
       --text-main: #f5f5f7;
-      --text-muted: #86868b;
+      --text-muted: #94a3b8; /* Ελαφρώς πιο φωτεινό γκρι για να ταιριάζει με το μπλε */
       --accent: #2997ff; /* Apple Blue */
       --card-bg: rgba(255, 255, 255, 0.02);
       --card-border: rgba(255, 255, 255, 0.08);
@@ -39,13 +39,23 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
+    /* Το προηγούμενο Radial Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: radial-gradient(circle at 50% 0%, #1e3a8a 0%, transparent 50%);
+      z-index: -1;
+      opacity: 0.5;
+    }
+
     /* --- Navbar (Apple Frosted Glass) --- */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
       padding: 18px 0;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(2, 6, 23, 0.6); /* Προσαρμοσμένο στο μπλε theme */
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -87,7 +97,7 @@
       letter-spacing: -0.05em;
       margin-bottom: 15px;
       /* Subtle silver gradient for text */
-      background: linear-gradient(180deg, #ffffff 0%, #86868b 100%);
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
       -webkit-background-clip: text;
       color: transparent;
       line-height: 1.1;
@@ -117,7 +127,7 @@
       gap: 8px;
       padding: 14px 28px;
       background: var(--text-main);
-      color: #000;
+      color: #020617;
       text-decoration: none;
       border-radius: 980px; /* Perfect pill shape */
       font-weight: 600;
@@ -137,13 +147,13 @@
     }
 
     .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.15);
       transform: scale(1.03);
     }
 
     /* --- Sections --- */
     section {
-      max-width: 980px; /* Apple often uses 980px max-width */
+      max-width: 980px;
       margin: auto;
       padding: 100px 20px; 
     }
@@ -231,7 +241,7 @@
 
     .card:hover {
       transform: scale(1.02);
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.06);
     }
 
     .card-icon {
