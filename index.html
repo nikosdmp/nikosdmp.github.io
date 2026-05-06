@@ -10,9 +10,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* CSS Variables για εύκολη αλλαγή χρωμάτων */
+    /* CSS Variables */
     :root {
-      --bg-color: #020617; /* Very dark blue/slate */
+      --bg-color: #020617; 
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --accent: #3b82f6;
@@ -29,7 +29,9 @@
     }
 
     html {
+      /* Smooth scrolling με σωστή απόσταση για το navbar */
       scroll-behavior: smooth;
+      scroll-padding-top: 90px; 
     }
 
     body {
@@ -38,7 +40,6 @@
       overflow-x: hidden;
     }
 
-    /* Βασικό Background Gradient Pattern */
     body::before {
       content: '';
       position: fixed;
@@ -89,14 +90,14 @@
     }
 
     header h1 {
-      font-size: 56px;
+      font-size: 64px;
       font-weight: 700;
       margin-bottom: 10px;
-      /* Gradient Text Effect */
       background: linear-gradient(to right, #60a5fa, #3b82f6);
       -webkit-background-clip: text;
       color: transparent;
       line-height: 1.2;
+      letter-spacing: -1px;
     }
 
     header p {
@@ -141,7 +142,7 @@
     section {
       max-width: 1000px;
       margin: auto;
-      padding: 100px 20px; /* Μεγαλύτερο padding για "αναπνοή" */
+      padding: 80px 20px; 
     }
 
     h2 {
@@ -200,7 +201,7 @@
     }
 
     li::before {
-      content: '\f058'; /* Font Awesome Check-circle */
+      content: '\f058'; 
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
       color: var(--accent);
@@ -335,9 +336,9 @@
 
     /* --- Responsive --- */
     @media (max-width: 768px) {
-      header h1 { font-size: 40px; }
+      header h1 { font-size: 44px; }
       nav { gap: 15px; }
-      section { padding: 80px 20px; }
+      section { padding: 60px 20px; }
     }
   </style>
 </head>
@@ -351,7 +352,7 @@
   </nav>
 
   <header id="home">
-    <h1>Hi, I'm Nikos 👋</h1>
+    <h1>Nikos Dimopoulos</h1>
     <p>Computer Science student passionate about coding, building projects, and solving complex problems.</p>
     <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 10px;">
       <a href="#projects" class="btn">View Projects <i class="fas fa-arrow-right"></i></a>
