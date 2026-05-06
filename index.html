@@ -63,13 +63,15 @@
     section {
       max-width: 1000px;
       margin: auto;
-      padding: 70px 20px;
+      padding: 80px 20px;
     }
 
     h2 {
       margin-bottom: 20px;
       border-left: 4px solid #3b82f6;
       padding-left: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
     .skills span {
@@ -83,6 +85,7 @@
 
     .skills span:hover {
       background: #3b82f6;
+      transform: translateY(-2px);
     }
 
     .projects {
@@ -92,12 +95,14 @@
     }
 
     .card {
+      position: relative;
+      overflow: hidden;
+
       background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.06);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
 
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.06);
 
       padding: 22px;
       border-radius: 18px;
@@ -109,37 +114,11 @@
 
     .card:hover {
       transform: translateY(-8px) scale(1.02);
-
-      background: rgba(51, 65, 85, 0.7);
+      background: rgba(255, 255, 255, 0.07);
 
       border: 1px solid rgba(255, 255, 255, 0.15);
 
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-    }
-
-    .card h3 {
-      font-size: 20px;
-      margin-bottom: 10px;
-      letter-spacing: 0.3px;
-      font-weight: 600;
-    }
-
-    .card p {
-      font-size: 14px;
-      opacity: 0.75;
-      line-height: 1.6;
-      margin-bottom: 12px;
-    }
-
-    .card a {
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .card a:hover {
-      color: #ffffff;
     }
 
     .card::before {
@@ -161,11 +140,32 @@
       opacity: 1;
     }
 
-    .card {
-      position: relative;
-      overflow: hidden;
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      font-weight: 600;
     }
-    
+
+    .card p {
+      font-size: 14px;
+      opacity: 0.75;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .card a {
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #60a5fa;
+      transition: 0.3s;
+    }
+
+    .card a:hover {
+      color: white;
+    }
+
     ul {
       padding-left: 20px;
     }
@@ -205,24 +205,6 @@
       to {opacity: 1;}
     }
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Responsive */
-    @media(max-width: 600px) {
-      header h1 {
-        font-size: 30px;
-      }
-    }
-
   </style>
 </head>
 
@@ -234,7 +216,6 @@
   <div style="margin-top:20px;">
     <a href="cv.pdf" download class="btn">Download CV</a>
   </div>
-  
 </header>
 
 <section>
@@ -266,10 +247,7 @@
 
     <div class="card">
       <h3>StarWarsMazeGame</h3>
-      <p>
-        Maze game in C featuring file handling and structured logic.
-        Built to practice memory management and algorithms.
-      </p>
+      <p>Maze game in C featuring file handling and structured logic.</p>
       <a href="https://github.com/nikosdmp/StarWarsMazeGame">View Project →</a>
     </div>
 
