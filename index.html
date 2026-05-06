@@ -40,6 +40,22 @@
       opacity: 0.8;
     }
 
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: white;
+      color: #1e3a8a;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #3b82f6;
+      color: white;
+    }
+
     section {
       max-width: 1000px;
       margin: auto;
@@ -131,7 +147,15 @@
 
 <header>
   <h1>Hi, I'm Nikos 👋</h1>
-  <p>Computer Science Student | C • Java • Python</p>
+  <p> 
+    Computer Science student focused on software development.
+    Experienced in C, Java, and Python through hands-on projects.
+    Currently looking for internship opportunities.
+  </p>
+  <div style="margin-top:20px;">
+    <a href="cv.pdf" download class="btn">Download CV</a>
+  </div>
+  
 </header>
 
 <section>
@@ -149,12 +173,24 @@
 </section>
 
 <section>
+  <h2><i class="fas fa-bolt"></i> Highlights</h2>
+  <ul>
+    <li>Strong understanding of C programming</li>
+    <li>Experience with file handling and data structures</li>
+    <li>Problem-solving mindset</li>
+  </ul>
+</section>
+
+<section>
   <h2><i class="fas fa-code"></i> Projects</h2>
   <div class="projects">
 
     <div class="card">
       <h3>StarWarsMazeGame</h3>
-      <p>Maze game in C with Star Wars theme.</p>
+      <p>
+        Maze game in C featuring file handling and structured logic.
+        Built to practice memory management and algorithms.
+      </p>
       <a href="https://github.com/nikosdmp/StarWarsMazeGame">View Project →</a>
     </div>
 
